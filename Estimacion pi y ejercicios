@@ -1,0 +1,74 @@
+import random   
+x = random.random() #ejercicio 1 a
+if x <= 0.5:
+  print("aguila")
+else :
+  print("sol")
+  t=0 #ejercicio 1 b
+z=0
+for i in range(1000):
+  x = random.random()
+  if x <= 0.5:
+   t +=1
+  else :
+   z +=1 
+
+print("aguilas")
+print(t)
+print("y soles")
+print(z)
+t=0 #ejercicio 1 c
+z=0
+for i in range(1000):
+  x = random.random()
+  if x <= 0.5:
+   t +=1
+  else :
+   z +=1 
+
+h=z/1000
+print("la probabilidad de que salga sol es ", h)
+x=random.randint(1, 5) #ejercicio 2 a
+if x == 1:
+  print("blanco")
+else:
+    if x == 2:
+      print("negro")
+    else:
+        if x == 3:
+         print("rojo")
+        else:
+            if x == 4:
+              print("azul")
+            else:
+                print("verde")
+                for i in range(5): #ejercicio 2 b
+ x=random.randint(1, 5)
+ if x == 1:
+  print("blanco")
+ else:
+    if x == 2:
+      print("negro")
+    else:
+        if x == 3:
+         print("rojo")
+        else:
+            if x == 4:
+              print("azul")
+            else:
+                print("verde")
+                import matplotlib.pyplot as plt
+import numpy as np
+z=0
+t=0
+for i in range(10000):
+ x1 = random.random()
+ y2 = random.random()
+ f=((x1)*(x1))+((y2)*(y2))
+ if f <= 1:
+    z +=1
+ else:
+    t +=1
+
+c=(z/10000)*4
+print(c)
