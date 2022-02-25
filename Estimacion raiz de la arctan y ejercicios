@@ -1,0 +1,110 @@
+import random   
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+#ejercicio 3
+N = 1000
+z = 0
+
+XCircle=[]  
+YCircle=[]  
+XSquare=[]  
+YSquare=[]  
+
+for p in range(N):
+    x=random.random()
+    y=random.random()
+    if(x**2+y**2 <= 1):
+        z+=1
+        XCircle.append(x)  
+        YCircle.append(y)        
+    else:
+        XSquare.append(x)  
+        YSquare.append(y)
+
+Pi = 4*z/N
+
+print("N=%d Aciertos=%d Pi=%.2f" %(N,z,Pi))
+
+XLin=np.linspace(0,1)
+YLin=[]
+for x in XLin:
+    YLin.append(np.sqrt(1-x**2))
+
+fig = plt.figure(1, figsize=(8, 8)) 
+plt.axis("equal")                             
+plt.grid(which="major")                        
+plt.plot(XLin , YLin, color="red" , linewidth="1") 
+plt.scatter(XCircle, YCircle, color="blue", marker   =".") 
+plt.scatter(XSquare, YSquare, color="green"  , marker   =".") 
+plt.title("Estimación de $\pi$ por el método de Monte Carlo")
+plt.xlabel("X")
+plt.ylabel("Y")
+ 
+plt.show()
+
+
+#ejercicio 4
+e=(3.1416/4)+0*(1-(3.1416/4))
+print (e)
+v=(3.1416/4)*(1-(3.1416/4))
+print (v)
+
+
+
+#ejercicio 5
+z=0
+for i in range(1000):
+  z +=(3.1416/4)
+
+h=z/1000
+print (h) #esperanza
+
+v=h-(h**2)
+print (v) #varianza
+
+
+
+
+#Tarea
+N = 1000
+z = 0
+
+XCircle=[]  
+YCircle=[]  
+XSquare=[]  
+YSquare=[]  
+
+for p in range(N):
+    x=random.random()
+    y=random.random()
+    h=np.sqrt(arctan(x))
+    if(y <= h):
+        z+=1
+        XCircle.append(x)  
+        YCircle.append(y)        
+    else:
+        XSquare.append(x)  
+        YSquare.append(y)
+
+area= z/N
+
+print("N=%d Aciertos=%d area=%.2f" %(N,z,area))
+
+XLin=np.linspace(0,1)
+YLin=[]
+for x in XLin:
+    YLin.append(np.sqrt(arctan(x)))
+
+fig = plt.figure(1, figsize=(8, 8)) 
+plt.axis("equal")                             
+plt.grid(which="major")                        
+plt.plot(XLin , YLin, color="red" , linewidth="1") 
+plt.scatter(XCircle, YCircle, color="blue", marker   =".") 
+plt.scatter(XSquare, YSquare, color="green"  , marker   =".") 
+plt.title("Estimación de la integral de raiz de arctangente por el método de Monte Carlo")
+plt.xlabel("X")
+plt.ylabel("Y")
+ 
+plt.show()
