@@ -1,0 +1,55 @@
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+#ejercicio
+#elipse de altura 1 y largo 2
+def pi_mc(n):
+    pi = 0
+    lx = []
+    ly = []
+    counter = 0
+    for i in range(n):
+        x = random.random()
+        y = random.random()
+        if ((x**2)/4) + ((y**2 )/1) <1:
+            counter = counter + 1
+            lx.append(counter)
+            ly.append(4.0*float(counter)/(i + 1))
+        
+        pi = 4.0*float(counter)/(i + 1)
+        
+        e = np.absolute((pi - (np.pi*2))/(np.pi*2))
+    print("elipse =", pi)
+    print("error =", e)
+    
+    fig = plt.figure(1, figsize=(8, 8))        
+    plt.xlabel("Iteraciones")
+    plt.ylabel("Estimación de elipse")
+    plt.grid()
+    plt.plot(lx, ly, color="blue", markersize=1)
+    plt.show()
+    pi_mc(1000)
+    import math
+    #tarea experimento
+a=0
+c=10000
+b=10    #a y b la distancia que hay entre las lineas
+t=0
+q=5 #largo del centro al final de la aguja
+for i in range(c):
+ c=random.uniform(0, 10) #el centro de la aguja
+ h=random.uniform(0, 360) #de la punta pede partir de cero grados a 360
+ z=h%90
+ l=180-90-z
+ y=((q*math.sin(l))/math.sin(90))
+ if c-y <= 0:
+   t +=1
+ else :
+  if c+y >= 10:
+   t +=1
+
+k=(2*c)/t
+print(k)
+
+
+
