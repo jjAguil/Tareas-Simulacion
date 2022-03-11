@@ -1,0 +1,248 @@
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+
+#tarea
+nums1 = []
+m=180
+de=15
+
+t=0
+while t < 10000:
+ x1=0
+ z=random.random()+random.random()+random.random()+random.random()+random.random()+random.random()+random.random()+random.random()+random.random()+random.random()+random.random()+random.random()
+ x1 +=z
+ t1=m+de*(x1-6)
+ nums1.append(t1)
+
+ t +=1
+plt.hist(nums1, bins =200 )
+plt.show()
+
+#gauss
+nums = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.gauss(mu, sigma)
+    nums.append(temp)
+
+plt.hist(nums, bins = 200)
+plt.show()
+## Ejercicio
+
+##Estimar las integrales:
+
+#1. $\int_0^1 (1 - x^2)^{\frac{3}{2}} dx$
+
+N = 1000
+z = 0
+
+XCircle=[]  
+YCircle=[]  
+XSquare=[]  
+YSquare=[]  
+
+for p in range(N):
+    x=random.random()
+    y=random.random()
+    h=(1-x**2)**(3/2)
+    if(y <= h):
+        z+=1
+        XCircle.append(x)  
+        YCircle.append(y)        
+    else:
+        XSquare.append(x)  
+        YSquare.append(y)
+
+area= z/N
+
+print("N=%d Aciertos=%d area=%.2f" %(N,z,area))
+
+XLin=np.linspace(0,1)
+YLin=[]
+for x in XLin:
+    YLin.append((1-x**2)**(3/2))
+
+fig = plt.figure(1, figsize=(8, 8)) 
+plt.axis("equal")                             
+plt.grid(which="major")                        
+plt.plot(XLin , YLin, color="red" , linewidth="1") 
+plt.scatter(XCircle, YCircle, color="blue", marker   =".") 
+plt.scatter(XSquare, YSquare, color="green"  , marker   =".") 
+plt.title("Estimación de la integral de (1-x**2)**(3/2) por el método de Monte Carlo")
+plt.xlabel("X")
+plt.ylabel("Y")
+ 
+plt.show()
+
+#2. $\int_{-2}^2 \exp (x + x^2) dx$
+
+N = 1000
+z = 0
+
+XCircle=[]  
+YCircle=[]  
+XSquare=[]  
+YSquare=[]  
+
+for p in range(N):
+    x=random.uniform(-2, 2)
+    y=random.uniform(-2, 2)
+    h=np.exp(x+x**2)
+    if(y <= h):
+        z+=1
+        XCircle.append(x)  
+        YCircle.append(y)        
+    else:
+        XSquare.append(x)  
+        YSquare.append(y)
+
+area= z/N
+
+print("N=%d Aciertos=%d area=%.2f" %(N,z,area))
+
+XLin=np.linspace(-2,2)
+YLin=[]
+for x in XLin:
+    YLin.append(np.exp(x+x**2))
+
+fig = plt.figure(1, figsize=(8, 8)) 
+plt.axis("equal")                             
+plt.grid(which="major")                        
+plt.plot(XLin , YLin, color="red" , linewidth="1") 
+plt.scatter(XCircle, YCircle, color="blue", marker   =".") 
+plt.scatter(XSquare, YSquare, color="green"  , marker   =".") 
+plt.title("Estimación de la integral de np.exp(x+x**2) por el método de Monte Carlo")
+plt.xlabel("X")
+plt.ylabel("Y")
+ 
+plt.show()
+
+## Ejercicio:
+
+#1. Elegir al azar una ciudad de la Lista despues de hacer una mezcla.
+Lista = ['Rome','New York','London','Berlin','Moskov', 'Los Angeles','Paris','Madrid','Tokio','Toronto']
+random.shuffle(Lista)
+print('mezcla1', Lista)
+ciudad = random.choice(Lista) 
+print("La ciudad elegida es - ", ciudad)
+
+#2. Elegir al azar tres ciudades después de una mezcla.
+
+for i in range(3):
+    Ciudad = random.choice(Lista) 
+    print ("La ciudad elegida es - ", Ciudad)
+    
+    
+    
+#Ejercicio:
+#Generar muestras e histograma de las funciones: triangular(), betavariate(), expovariate(), gammavariate(), lognormvariate(), normalvariate(), vonmisesvariate(), paretovariate() y weibullvariate()
+
+nums = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.triangular(150,50,100)
+    nums.append(temp)
+
+plt.hist(nums, bins = 200)
+plt.show()
+
+nums1 = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.betavariate(50,150)
+    nums1.append(temp)
+
+plt.hist(nums1, bins = 200)
+plt.show()
+
+nums2 = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.expovariate(100)
+    nums2.append(temp)
+
+plt.hist(nums2, bins = 200)
+plt.show()
+
+nums3 = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.gammavariate(100,0.01)
+    nums3.append(temp)
+
+plt.hist(nums3, bins = 200)
+plt.show()
+
+nums4 = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.lognormvariate(0.5,0.2)
+    nums4.append(temp)
+
+plt.hist(nums4, bins = 200)
+plt.show()
+
+
+plt.hist(nums3, bins = 200)
+plt.show()
+
+nums5 = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.normalvariate(mu,sigma)
+    nums5.append(temp)
+
+plt.hist(nums5, bins = 200)
+plt.show()
+
+
+numss5 = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.vonmisesvariate(mu,sigma)
+    numss5.append(temp)
+
+plt.hist(numss5, bins = 200)
+plt.show()
+
+
+numsss = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.paretovariate(100)
+    numsss.append(temp)
+
+plt.hist(numsss, bins = 200)
+plt.show()
+
+
+numsss = []
+mu = 100
+sigma = 50
+
+for i in range(10000):
+    temp = random.weibullvariate(mu,sigma)
+    numsss.append(temp)
+
+plt.hist(numsss, bins = 200)
+plt.show()
